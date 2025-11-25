@@ -1,4 +1,5 @@
 # Amharic Text Processor
+[![PyPI](https://img.shields.io/pypi/v/amharic-text-processor.svg)](https://pypi.org/project/amharic-text-processor/)
 
 **Amharic Text Processor** is a modular Python toolkit for cleaning, normalizing, and formatting Amharic text. Each processing step is a small class with a predictable `.apply()` method, and steps are easily chained with `Pipeline`.
 
