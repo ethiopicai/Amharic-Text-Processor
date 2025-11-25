@@ -20,7 +20,7 @@ from .processors import (
     SentenceDeduplicator,
 )
 
-__version__ = "0.1"
+__version__ = "0.1.1"
 __semver__ = __version__
 version_info = __version__.split(".")
 
