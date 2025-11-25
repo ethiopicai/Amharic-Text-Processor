@@ -1,5 +1,5 @@
 # Amharic Text Processor
-[![PyPI](https://img.shields.io/pypi/v/amharic-text-processor.svg)](https://pypi.org/project/amharic-text-processor/) [![CI](https://github.com/isrish/Amharic-Text-Processor/actions/workflows/test.yml/badge.svg)](https://github.com/isrish/Amharic-Text-Processor/actions/workflows/test.yml) [![Docs](https://github.com/isrish/Amharic-Text-Processor/actions/workflows/publish.yml/badge.svg?label=docs)](https://github.com/isrish/Amharic-Text-Processor/actions/workflows/publish.yml)
+[![PyPI](https://img.shields.io/pypi/v/amharic-text-processor.svg)](https://pypi.org/project/amharic-text-processor/) [![CI](https://github.com/isrish/Amharic-Text-Processor/actions/workflows/test.yml/badge.svg)](https://github.com/isrish/Amharic-Text-Processor/actions/workflows/test.yml) [![Docs](https://github.com/isrish/Amharic-Text-Processor/actions/workflows/publish.yml/badge.svg?label=docs)](https://github.com/isrish/Amharic-Text-Processor/actions/workflows/publish.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 **Amharic Text Processor** is a modular Python toolkit for cleaning, normalizing, and formatting Amharic text. Each processing step is a small class with a predictable `.apply()` method, and steps are easily chained with `Pipeline`.
 
