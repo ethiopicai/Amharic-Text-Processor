@@ -3,7 +3,7 @@
 
 **Amharic Text Processor** is a modular Python toolkit for cleaning, normalizing, and formatting Amharic text. Each processing step is a small class with a predictable `.apply()` method, and steps are easily chained with `Pipeline`.
 
-**Why this exists:** Amharic text from the web, documents, and OCR often arrives with HTML noise, mixed Ethiopic variants, inconsistent punctuation, legacy abbreviations, and numerals in different forms. This toolkit provides predictable, composable processors so you can rapidly build robust pipelines for ML datasets, search indexing, or downstream NLP tasks without reinventing cleaning logic. Most of the components in this toolkit were developed while processing large volumes of Amharic text crawled from Amharic-specific websites. 
+**Why this exists:** Amharic text from the web, documents, and OCR often arrives with HTML noise, mixed Ethiopic variants, inconsistent punctuation, legacy abbreviations, and numerals in different forms. This toolkit provides predictable, composable processors so you can rapidly build robust pipelines for ML datasets, search indexing, or downstream NLP tasks without reinventing cleaning logic. Many of these components were developed while processing large volumes of Amharic text crawled from Amharic-focused websites indexed by [Common Crawl](https://commoncrawl.org/get-started).
 
 ---
 
