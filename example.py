@@ -73,6 +73,6 @@ with open("sample_crawled.txt", "r", encoding="utf-8") as f:
 
 
 # transliterate Amharic text to Latin using a romanization table
-rawtext = "እሺ፣ የክፍያ ሂደቱን በአማርኛ እመራዎታለሁ። የአካውንት ቁጥርዎን ያስገቡ።"
+rawtext = "እሺ፣ የክፍያ ሂደቱን በአማርኛ እመራዎታለሁ። የአካውንት ቁጥርዎን ያስገቡ። 565 የኢትዮጵያ ንግድ ባንክ ነው።"
 new_text = AmharicTransliterator().apply(rawtext)
 print(new_text["text"])  # 
