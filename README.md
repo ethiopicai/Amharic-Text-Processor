@@ -68,6 +68,12 @@ raw = """
 result = pipeline.apply(raw)
 print(result["text"])
 # -> ሰላም። ሏ ዓመተ ምሕረት 2016 ሀይለ ማርያም በሚሊዮን ይዘት ሰጠ።
+
+# Transliteration to Latin
+rawtext = "እሺ፣ የክፍያ ሂደቱን በአማርኛ እመራዎታለሁ። የአካውንት ቁጥርዎን ያስገቡ። 565 የኢትዮጵያ ንግድ ባንክ ነው።"
+new_text = AmharicTransliterator().apply(rawtext)
+print(new_text["text"])
+# -> eshi, yakefeyaa hidatune baamaarenyaa emaraawotaalahu. yaakaawenete quterewone yaasegabu. 565 yaiteyopheyaa negede baaneke nawe.
 ```
 
 ---
@@ -98,8 +104,8 @@ print(result["text"])
 - [`CharacterRemapper`](amharic_text_processor/processors/normalize.py): normalize variant Ethiopic glyphs to canonical forms
 - [`DottedAbbreviationNormalizer`](amharic_text_processor/processors/abbreviations.py): convert dotted abbreviations (e.g., እ.ኤ.አ) into slash form before expansion
 - [`AbbreviationExpander`](amharic_text_processor/processors/abbreviations.py): expand slash/dot Amharic abbreviations to full forms (e.g., ፍ/ቤቱ -> ፍርድ ቤቱ, ፕ/ር -> ፕሮፌሰር, ዓ.ም. -> ዓመተ ምሕረት)
-- [`NumberToGeez`](amharic_text_processor/processors/numbers.py): convert Arabic digits in text to Ethiopic (Geez) numerals
-- [`GeezToNumber`](amharic_text_processor/processors/numbers.py): convert Ethiopic (Geez) numerals back to Arabic digits
+- [`NumberToGeez`](amharic_text_processor/processors/numbers.py): convert Arabic digits in text to Ethiopic (Geez) numerals (e.g., 31 -> ፴፩)
+- [`GeezToNumber`](amharic_text_processor/processors/numbers.py): convert Ethiopic (Geez) numerals back to Arabic digits  (e.g., ፴፩ -> 31)
 - [`WordNumberToDigits`](amharic_text_processor/processors/numbers.py): convert Amharic worded numbers (e.g., “ሁለት ሺህ ሶስት መቶ”) to Arabic digits, including millions+
 - [`DigitsToWordNumber`](amharic_text_processor/processors/numbers.py): turn Arabic digit sequences into Amharic worded numbers (supports up to trillions)
 - [`OldPhoneMapper`](amharic_text_processor/processors/phonetic.py): convert legacy phone representations to modern forms via a predefined mapping
