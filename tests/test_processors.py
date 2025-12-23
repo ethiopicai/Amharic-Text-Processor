@@ -78,9 +78,9 @@ def test_regex_filter_substitutes_and_counts():
 
 def test_character_remapper_normalizes_variants():
     processor = CharacterRemapper()
-    text = "ሠሥ ሓህ ፀፅ ዐዒ ጎኰ"
+    text = "ሠሥ ሓህ ፀፅ ዐዒ ጎኰ ቱዋል"
     result = processor.apply({"text": text})
-    assert result["text"] == "ሰስ ሀህ ጸጽ አኢ ጐኮ"
+    assert result["text"] == "ሰስ ሀህ ጸጽ አኢ ጐኮ ቷል"
     assert result["characters_remapped"] is True
 
 

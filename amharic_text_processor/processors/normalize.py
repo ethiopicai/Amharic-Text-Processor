@@ -70,6 +70,7 @@ class UnicodeNormalizer:
 class CharacterRemapper:
     """Remap legacy/variant Ethiopic characters to canonical forms."""
 
+    # Character-level canonicalization for commonly interchanged Ethiopic glyphs.
     REMAP = {
         "ሠ": "ሰ",
         "ሡ": "ሱ",
@@ -94,6 +95,11 @@ class CharacterRemapper:
         "ኄ": "ሄ",
         "ኅ": "ህ",
         "ኆ": "ሆ",
+        "ኊ": "ሂ",
+        "ኋ": "ሀ",
+        "ኌ": "ሄ",
+        "ኍ": "ህ",
+        "ኾ": "ሆ",
         "ፀ": "ጸ",
         "ፁ": "ጹ",
         "ፂ": "ጺ",
@@ -102,6 +108,7 @@ class CharacterRemapper:
         "ፅ": "ጽ",
         "ፆ": "ጾ",
         "ፇ": "ጿ",
+        "ዯ": "ዮ",
         "ዐ": "አ",
         "ዑ": "ኡ",
         "ዒ": "ኢ",
@@ -111,6 +118,9 @@ class CharacterRemapper:
         "ዖ": "ኦ",
         "ጎ": "ጐ",
         "ኰ": "ኮ",
+        "ቊ": "ቁ",
+        "ኵ": "ኩ",
+        "ዉ": "ው",
     }
 
     def __init__(self) -> None:
@@ -119,4 +129,25 @@ class CharacterRemapper:
     def apply(self, data: ProcessorInput) -> ProcessorOutput:
         text = BaseProcessor._extract_text(data)
         remapped = text.translate(self._translation_table)
+        # Normalize labialized suffix variants like ቱዋል -> ቷል.
+        remapped = re.sub(r"(ሉ[ዋአ])", "ሏ", remapped)
+        remapped = re.sub(r"(ሙ[ዋአ])", "ሟ", remapped)
+        remapped = re.sub(r"(ቱ[ዋአ])", "ቷ", remapped)
+        remapped = re.sub(r"(ሩ[ዋአ])", "ሯ", remapped)
+        remapped = re.sub(r"(ሱ[ዋአ])", "ሷ", remapped)
+        remapped = re.sub(r"(ሹ[ዋአ])", "ሿ", remapped)
+        remapped = re.sub(r"(ቁ[ዋአ])", "ቋ", remapped)
+        remapped = re.sub(r"(ቡ[ዋአ])", "ቧ", remapped)
+        remapped = re.sub(r"(ቹ[ዋአ])", "ቿ", remapped)
+        remapped = re.sub(r"(ሁ[ዋአ])", "ኋ", remapped)
+        remapped = re.sub(r"(ኑ[ዋአ])", "ኗ", remapped)
+        remapped = re.sub(r"(ኙ[ዋአ])", "ኟ", remapped)
+        remapped = re.sub(r"(ኩ[ዋአ])", "ኳ", remapped)
+        remapped = re.sub(r"(ዙ[ዋአ])", "ዟ", remapped)
+        remapped = re.sub(r"(ጉ[ዋአ])", "ጓ", remapped)
+        remapped = re.sub(r"(ደ[ዋአ])", "ዷ", remapped)
+        remapped = re.sub(r"(ጡ[ዋአ])", "ጧ", remapped)
+        remapped = re.sub(r"(ጩ[ዋአ])", "ጯ", remapped)
+        remapped = re.sub(r"(ጹ[ዋአ])", "ጿ", remapped)
+        remapped = re.sub(r"(ፉ[ዋአ])", "ፏ", remapped)
         return {"text": remapped, "characters_remapped": remapped != text}
