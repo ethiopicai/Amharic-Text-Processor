@@ -21,7 +21,7 @@ from .processors import (
     AmharicTransliterator,
 )
 
-__version__ = "0.1.2"
+__version__ = "0.1.3"
 __semver__ = __version__
 version_info = __version__.split(".")
 
