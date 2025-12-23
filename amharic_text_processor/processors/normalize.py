@@ -130,24 +130,28 @@ class CharacterRemapper:
         text = BaseProcessor._extract_text(data)
         remapped = text.translate(self._translation_table)
         # Normalize labialized suffix variants like ቱዋል -> ቷል.
-        remapped = re.sub(r"(ሉ[ዋአ])", "ሏ", remapped)
-        remapped = re.sub(r"(ሙ[ዋአ])", "ሟ", remapped)
-        remapped = re.sub(r"(ቱ[ዋአ])", "ቷ", remapped)
-        remapped = re.sub(r"(ሩ[ዋአ])", "ሯ", remapped)
-        remapped = re.sub(r"(ሱ[ዋአ])", "ሷ", remapped)
-        remapped = re.sub(r"(ሹ[ዋአ])", "ሿ", remapped)
-        remapped = re.sub(r"(ቁ[ዋአ])", "ቋ", remapped)
-        remapped = re.sub(r"(ቡ[ዋአ])", "ቧ", remapped)
-        remapped = re.sub(r"(ቹ[ዋአ])", "ቿ", remapped)
-        remapped = re.sub(r"(ሁ[ዋአ])", "ኋ", remapped)
-        remapped = re.sub(r"(ኑ[ዋአ])", "ኗ", remapped)
-        remapped = re.sub(r"(ኙ[ዋአ])", "ኟ", remapped)
-        remapped = re.sub(r"(ኩ[ዋአ])", "ኳ", remapped)
-        remapped = re.sub(r"(ዙ[ዋአ])", "ዟ", remapped)
-        remapped = re.sub(r"(ጉ[ዋአ])", "ጓ", remapped)
-        remapped = re.sub(r"(ደ[ዋአ])", "ዷ", remapped)
-        remapped = re.sub(r"(ጡ[ዋአ])", "ጧ", remapped)
-        remapped = re.sub(r"(ጩ[ዋአ])", "ጯ", remapped)
-        remapped = re.sub(r"(ጹ[ዋአ])", "ጿ", remapped)
-        remapped = re.sub(r"(ፉ[ዋአ])", "ፏ", remapped)
+        labialized = {
+            "ሉ": "ሏ",
+            "ሙ": "ሟ",
+            "ቱ": "ቷ",
+            "ሩ": "ሯ",
+            "ሱ": "ሷ",
+            "ሹ": "ሿ",
+            "ቁ": "ቋ",
+            "ቡ": "ቧ",
+            "ቹ": "ቿ",
+            "ሁ": "ኋ",
+            "ኑ": "ኗ",
+            "ኙ": "ኟ",
+            "ኩ": "ኳ",
+            "ዙ": "ዟ",
+            "ጉ": "ጓ",
+            "ደ": "ዷ",
+            "ጡ": "ጧ",
+            "ጩ": "ጯ",
+            "ጹ": "ጿ",
+            "ፉ": "ፏ",
+        }
+        for base, normalized_form in labialized.items():
+            remapped = re.sub(rf"({base}[ዋአ])", normalized_form, remapped)
         return {"text": remapped, "characters_remapped": remapped != text}
